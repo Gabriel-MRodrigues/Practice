@@ -1,0 +1,14 @@
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore compiled files
+*.exe
+*.dll
+
+# Ignore IDE-specific files
+.vscode/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
