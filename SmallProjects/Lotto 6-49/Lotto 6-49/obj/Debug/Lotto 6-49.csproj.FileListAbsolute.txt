@@ -1,0 +1,10 @@
+C:\2024_NBCC\SandBox_PF\Class_Projects\Lotto 6-49\Lotto 6-49\bin\Debug\Lotto 6-49.exe.config
+C:\2024_NBCC\SandBox_PF\Class_Projects\Lotto 6-49\Lotto 6-49\bin\Debug\Lotto 6-49.exe
+C:\2024_NBCC\SandBox_PF\Class_Projects\Lotto 6-49\Lotto 6-49\bin\Debug\Lotto 6-49.pdb
+C:\2024_NBCC\SandBox_PF\Class_Projects\Lotto 6-49\Lotto 6-49\obj\Debug\Lotto 6-49.csproj.AssemblyReference.cache
+C:\2024_NBCC\SandBox_PF\Class_Projects\Lotto 6-49\Lotto 6-49\obj\Debug\Lotto_6_49.Form1.resources
+C:\2024_NBCC\SandBox_PF\Class_Projects\Lotto 6-49\Lotto 6-49\obj\Debug\Lotto_6_49.Properties.Resources.resources
+C:\2024_NBCC\SandBox_PF\Class_Projects\Lotto 6-49\Lotto 6-49\obj\Debug\Lotto 6-49.csproj.GenerateResource.cache
+C:\2024_NBCC\SandBox_PF\Class_Projects\Lotto 6-49\Lotto 6-49\obj\Debug\Lotto 6-49.csproj.CoreCompileInputs.cache
+C:\2024_NBCC\SandBox_PF\Class_Projects\Lotto 6-49\Lotto 6-49\obj\Debug\Lotto 6-49.exe
+C:\2024_NBCC\SandBox_PF\Class_Projects\Lotto 6-49\Lotto 6-49\obj\Debug\Lotto 6-49.pdb
