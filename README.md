@@ -40,7 +40,6 @@ This repository includes code written in:
 
 - **C#**
 - **JavaScript**
-- **SQL**
 - **HTML5/CSS3**
 
 ---
@@ -67,6 +66,7 @@ This repository is a personal learning space, but feedback is always welcome! If
 
 ## 🚀 Future Plans
 
+- Add SQL exercises
 - Add more LeetCode problems categorized by difficulty (Easy, Medium, Hard).
 - Add more categories to my LeetCode folder.
 - Add Algorithms folder for implementation of common algorithms and data structure.
