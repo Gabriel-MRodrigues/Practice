@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <body>
+    <p>Amazon Shipping Calculator</p>
+    <p>Orders under $40 = +$10 shipping.</p>
+    <p>Orders over $40 = FREE shipping.</p>
+    <p class="calculation">
+      <input
+        class="js-order"
+        type="text"
+        placeholder="Cost of order"
+        onkeydown="keyPress(event)"
+      />
+      <button
+        class="calculate-button"
+        onclick="
+                      calculatePrice();"
+      >
+        Calculate
+      </button>
+    </p>
+    <p class="js-result"></p>
+    <input
+      class="js-text"
+      type="text"
+      placeholder="Just type"
+      onkeyup="
+                                                                        displayText();"
+      onkeydown="deleteText(event);"
+    />
+    <p class="js-displaytext"></p>
+
+    <script>
+      function calculatePrice() {
+        const inputElement = document.querySelector(".js-order");
+        let cost = Number(inputElement.value);
+        cost *= 100;
+        const displayCost = document.querySelector(".js-result");
+        if (cost < 0) {
+          displayCost.classList.add("error-message");
+          displayCost.innerHTML = `Error: cost cannot be less than $0`;
+          return;
+        }
+        if (cost < 4000) {
+          cost += 1000;
+          displayCost.classList.remove("error-message");
+        }
+        displayCost.innerHTML = `$${cost / 100}`;
+      }
+
+      function keyPress(event) {
+        const key = event.key;
+        if (key === "Enter") {
+          calculatePrice();
+        } else if (key === "Escape") {
+          document.querySelector(".js-order").value = "";
+        }
+      }
+
+      function displayText() {
+        const text = document.querySelector(".js-displaytext");
+        const inputTextElement = document.querySelector(".js-text");
+        text.innerHTML = String(inputTextElement.value);
+      }
+
+      function deleteText(event) {
+        const key = event.key;
+        if (key === "Escape") {
+          document.querySelector(".js-text").value = "";
+        }
+      }
+
+      function negativeNumber() {}
+    </script>
+  </body>
+</html>
