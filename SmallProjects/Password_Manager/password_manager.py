@@ -44,7 +44,7 @@ def view():
     else:
         print("File does not exists...")
 
-max_tries = 0
+max_tries = 3
 while True:
     master_password = input("What is the master password? ")
     tries = 0
