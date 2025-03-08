@@ -1,6 +1,6 @@
 # Password Manager
 
-This is a mini project designed to securely manage user passwords. The project allows users to store and retrieve passwords for their accounts in a safe and encrypted manner. The main focus of this project is security, ensuring that only the user can access their saved passwords.
+This is a mini project designed to **securely manage user passwords**. The project allows users to store and retrieve passwords for their accounts in a safe and **encrypted** manner. The main focus of this project is **security**, ensuring that only the user can access their saved passwords.
 
 ## How it works:
 
