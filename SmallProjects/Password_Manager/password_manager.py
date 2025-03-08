@@ -22,8 +22,6 @@ file = "password.txt"
 key = load_key()
 fer = Fernet(key)
 
-master_password = input("What is the master password? ")
-
 def add():
     name = input("Account name: ")
     pwd = input("Password: ")
@@ -46,16 +44,29 @@ def view():
     else:
         print("File does not exists...")
 
+max_tries = 0
 while True:
-    mode = input("Would you like to add (add) a new password or view (view) your passwords? Type q to quit. ").lower()
-    if mode == 'q':
-        print("Good bye!")
-        break
+    master_password = input("What is the master password? ")
+    tries = 0
+    while master_password != 'gabriel' and tries < max_tries:
+        tries += 1
+        print(f'Invalid password. You have {max_tries - tries} attempts left...')
+        master_password = input('What is the master password? ')
+    if master_password == 'gabriel':
+        while True:
+            mode = input("Would you like to add (add) a new password or view (view) your passwords? Type q to quit. ").lower()
+            if mode == 'q':
+                print("Good bye!")
+                break
 
-    if mode == 'add':
-        add()
-    elif mode == 'view':
-        view()
+            if mode == 'add':
+                add()
+            elif mode == 'view':
+                view()
+            else:
+                print("Invalid option...")
+                continue
+        break
     else:
-        print("Invalid option...")
-        continue;
+        print("Failed to login after 3 attempts. Exiting...")
+        break
