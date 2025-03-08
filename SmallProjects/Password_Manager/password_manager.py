@@ -27,7 +27,7 @@ def add():
     pwd = input("Password: ")
 
     with open(file, "a") as f:
-        f.write(f"{name}|{pwd}\n")
+        f.write(f"{name}|{fer.encrypt(pwd.encode()).decode()}\n")
     print("Adding password...")
 
 def view():
@@ -40,7 +40,7 @@ def view():
                 for line in f.readlines():
                     data = line.rstrip()
                     user, passwd = data.split("|")
-                    print(f"User: {user} | Password: {passwd}")
+                    print(f"User: {user} | Password: {fer.decrypt(passwd.encode()).decode()}")
     else:
         print("File does not exists...")
 
