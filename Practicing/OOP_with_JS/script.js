@@ -206,3 +206,40 @@ const wilma = Object.create(PersonProto);
 wilma.init('Wilma', 1972);
 wilma.calcAge();
 console.log(wilma);
+
+// Inheritance between classes - Constructor Function
+const PersonI = function (firstName, birthYear) {
+  this.firstName = firstName;
+  this.birthYear = birthYear;
+};
+
+PersonI.prototype.calcAge = function () {
+  console.log(new Date().getFullYear() - this.birthYear);
+};
+
+const Student = function (firstName, birthYear, course) {
+  PersonI.call(this, firstName, birthYear);
+  this.course = course;
+};
+
+// Linking prototypes (chaining prototypes)
+Student.prototype = Object.create(PersonI.prototype);
+// Now any student object will have access to functions on the Person class
+// because they are linked
+// Now, javascript will go through the chain searching for methods that are not in the student class
+
+Student.prototype.introduce = function () {
+  console.log(`My name is ${this.firstName} and I study ${this.course}`);
+};
+
+const khoi = new Student('Khoi', 2005, 'Computer Science');
+khoi.introduce();
+khoi.calcAge(); // it will look up to the prototype chain to find calcAge on the PersonI prototype
+
+console.log(khoi instanceof Student); // true
+console.log(khoi instanceof PersonI); // true
+console.log(khoi instanceof Object); // true
+
+// the constructor is still person
+Student.prototype.constructor = Student; // here we change the constructor
+console.dir(Student.prototype.constructor);
