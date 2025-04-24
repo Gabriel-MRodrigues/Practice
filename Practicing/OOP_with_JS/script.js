@@ -158,3 +158,27 @@ console.log(gabriel.age); // access it as a property
 
 console.log(gabriel.fullName); // fullname is not defined
 // if full name doesn't respect the setter function the fullname property will not be created and it will be UNDEFINED
+
+// Static method and classes
+// it doesn't need to instantiate to be called
+// it is not available on the instances
+
+// Static methods belong to the class itself, not to instances of the class.
+// You don't need to create an object to call them
+// And instances can't access static methods directly
+
+class MathUtils {
+  static add(a, b) {
+    return a + b;
+  }
+
+  subtract(a, b) {
+    return a - b;
+  }
+}
+
+console.log(MathUtils.add(3, 5)); // 8
+
+const util = new MathUtils();
+// console.log(util.add(5, 5)); it will give and error: util.add is not a function
+console.log(util.subtract(9, 4)); // 5
