@@ -91,6 +91,7 @@ class PersonCl {
   // this function will be automatically added to the prototype property of the PersonCl class
   calcAge() {
     console.log(new Date().getFullYear() - this.birthYear);
+    return new Date().getFullYear() - this.birthYear;
   }
 
   get age() {
@@ -243,3 +244,21 @@ console.log(khoi instanceof Object); // true
 // the constructor is still person
 Student.prototype.constructor = Student; // here we change the constructor
 console.dir(Student.prototype.constructor);
+
+// Inheritance between classes using Class constructor
+class StudentCl extends PersonCl {
+  constructor(fullName, birthYear, course) {
+    // it always needs to happen first ( the super keyword )
+    super(fullName, birthYear);
+    this.course = course;
+  }
+
+  introduce() {
+    console.log(`${this.fullName} | ${this.calcAge()} | ${this.course}`);
+  }
+}
+
+const ralph = new StudentCl('Ralph Goat', 2005, 'Business');
+ralph.introduce();
+
+// way easier to implement inheritance with the class constructor...
