@@ -83,8 +83,8 @@ console.log(arr.unique());
 
 // class declaration
 class PersonCl {
-  constructor(firstName, birthYear) {
-    this.firstName = firstName;
+  constructor(fullName, birthYear) {
+    this.fullName = fullName;
     this.birthYear = birthYear;
   }
 
@@ -92,9 +92,26 @@ class PersonCl {
   calcAge() {
     console.log(new Date().getFullYear() - this.birthYear);
   }
+
+  get age() {
+    return new Date().getFullYear() - this.birthYear;
+  }
+
+  set fullName(name) {
+    console.log(name);
+    if (name.includes(' ')) {
+      this._fullName = name;
+    } else {
+      console.log(`${name} is not a fullName`);
+    }
+  }
+
+  get fullName() {
+    return this._fullName;
+  }
 }
 
-const gabriel = new PersonCl('Gabriel', 2005);
+const gabriel = new PersonCl('Gabriel Rodrigues', 2005); // will give the set error of "name is not a fullName" if Name doesn't have space
 console.log(gabriel);
 gabriel.calcAge();
 
@@ -114,3 +131,30 @@ gabriel.greet();
 // function constructors look a bit messy...
 // while using classes constructors the code looks more cleaner and organized
 // because the properties and the behaviors will be inside the class constructor
+
+// Getters and Setters
+const account = {
+  owner: 'Gabriel',
+  movements: [200, 300, 500, 340, 540],
+
+  get latest() {
+    return this.movements.slice(-1).pop();
+  },
+
+  set latest(mov) {
+    // it must have exactly one parameter
+    this.movements.push(mov);
+  },
+};
+
+// we call it as a property
+console.log(account.latest); // 540
+account.latest = 50; // setting latest element to 50
+console.log(account.movements);
+console.log(account.latest); // 50
+
+// adding age getter on PersonCl class
+console.log(gabriel.age); // access it as a property
+
+console.log(gabriel.fullName); // fullname is not defined
+// if full name doesn't respect the setter function the fullname property will not be created and it will be UNDEFINED
