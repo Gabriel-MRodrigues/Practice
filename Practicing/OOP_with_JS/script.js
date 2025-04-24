@@ -1,3 +1,4 @@
+'use strict';
 // This file is dedicated to learn OOP in JavaScript.
 // Instead of using classes (like in C#), JavaScript is based on prototypes
 // When you try to access a property on an object and it doesn’t exist, JavaScript will look up the prototype chain to find it.
@@ -38,7 +39,7 @@ Person.hey();
 console.log(Person.prototype);
 
 Person.prototype.calcAge = function () {
-  console.log(2037 - this.birthYear);
+  console.log(new Date().getFullYear() - this.birthYear);
 };
 
 jonas.calcAge();
@@ -76,3 +77,40 @@ Array.prototype.unique = function () {
 
 // now I can call the unique method on any array
 console.log(arr.unique());
+
+// class expression
+// const PersonCl = class {}
+
+// class declaration
+class PersonCl {
+  constructor(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  }
+
+  // this function will be automatically added to the prototype property of the PersonCl class
+  calcAge() {
+    console.log(new Date().getFullYear() - this.birthYear);
+  }
+}
+
+const gabriel = new PersonCl('Gabriel', 2005);
+console.log(gabriel);
+gabriel.calcAge();
+
+console.log(gabriel.__proto__ === PersonCl.prototype);
+
+// it works exactly the same as creating the function inside the class
+PersonCl.prototype.greet = function () {
+  console.log(`Hey ${this.firstName}`);
+};
+
+gabriel.greet();
+
+// 1. Classes are NOT hoisted
+// 2. Classes are also first-class citizens ( we can pass them into functions and return them from functions )
+// 3. Classes are executed in strict mode
+
+// function constructors look a bit messy...
+// while using classes constructors the code looks more cleaner and organized
+// because the properties and the behaviors will be inside the class constructor
