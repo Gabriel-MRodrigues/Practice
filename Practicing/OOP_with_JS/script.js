@@ -1,5 +1,6 @@
 'use strict';
 // This file is dedicated to learn OOP in JavaScript.
+// I followed along with Jonas from his Udemy course since he was the instructor of this class.
 // Instead of using classes (like in C#), JavaScript is based on prototypes
 // When you try to access a property on an object and it doesn’t exist, JavaScript will look up the prototype chain to find it.
 
