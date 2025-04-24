@@ -58,3 +58,21 @@ console.log(jonas.species, matilda.species);
 
 console.log(jonas.hasOwnProperty('firstName'));
 console.log(jonas.hasOwnProperty('species'));
+
+console.log(jonas.__proto__.__proto__.__proto__);
+
+console.dir(Person.prototype.constructor);
+
+const arr = [1, 7, 3, 5, 5, 6, 7, 10, 5]; // -> this is the same as using new Array
+console.log(arr.__proto__); // shows prototype of Array object (map, reduce, filter, indexOf)
+// any array will inherit from its prototype
+console.log(arr.__proto__ === Array.prototype);
+
+// creating my own method to the prototype array constructor
+Array.prototype.unique = function () {
+  // method that returns an array with only unique elements
+  return [...new Set(this)];
+};
+
+// now I can call the unique method on any array
+console.log(arr.unique());
