@@ -182,3 +182,27 @@ console.log(MathUtils.add(3, 5)); // 8
 const util = new MathUtils();
 // console.log(util.add(5, 5)); it will give and error: util.add is not a function
 console.log(util.subtract(9, 4)); // 5
+
+// Object.create()
+const PersonProto = {
+  calcAge() {
+    console.log(new Date().getFullYear() - this.birthYear);
+  },
+
+  init(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  },
+};
+
+const steven = Object.create(PersonProto); // defining which prototype steven object should look for
+steven.name = 'Steve';
+steven.birthYear = 2001;
+steven.calcAge();
+
+console.log(steven.__proto__ === PersonProto);
+
+const wilma = Object.create(PersonProto);
+wilma.init('Wilma', 1972);
+wilma.calcAge();
+console.log(wilma);
