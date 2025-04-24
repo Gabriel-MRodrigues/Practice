@@ -276,3 +276,133 @@ StudentProto.init = function (firstName, birthYear, course) {
 const jay = Object.create(StudentProto);
 jay.init('Jay', 2010, 'IDK');
 jay.calcAge();
+
+// Encapsulation: Private Class Fields and Methods
+
+// 1. Public fields
+// 2. Private fields
+// 3. Public methods
+// 3. Private methods
+
+class Account {
+  locale = navigator.language;
+  bank = 'Gabriel Bank';
+  #movements = [];
+  #pin;
+
+  constructor(owner, currency, pin) {
+    this.owner = owner;
+    this.currency = currency;
+    this.#pin = pin;
+    // this.movements = [];
+    // this.locale = navigator.language;
+
+    console.log('Thanks for opening an account with us!');
+  }
+
+  // Public interfaces (API)
+  deposit(val) {
+    this.#movements.push(val);
+    // adding the return this to the method
+    // will give the possibility to chain methods of the object
+    return this;
+  }
+
+  withdraw(val) {
+    this.deposit(-val);
+    return this;
+  }
+
+  #approveLoan(val) {
+    return true;
+  }
+
+  requestLoan(val) {
+    if (this.#approveLoan(val)) {
+      this.deposit(val);
+      return this;
+    }
+  }
+
+  get balance() {
+    return this.#movements.reduce((acc, mov) => acc + mov, 0);
+  }
+
+  getMovements() {
+    console.log(this.#movements);
+    return this.#movements;
+  }
+
+  getPin() {
+    return this.#pin;
+  }
+}
+
+const gabrielAccount = new Account('Gabriel', 'CAD', 1234);
+console.log(gabrielAccount);
+
+// adding movements
+gabrielAccount.deposit(500);
+gabrielAccount.withdraw(250);
+gabrielAccount.requestLoan(200);
+
+// console.log(gabrielAccount.#movements); -> not accessible
+// console.log(gabrielAccount.#approveLoan); -> not accessible
+
+console.log(gabrielAccount);
+console.log(gabrielAccount.balance);
+gabrielAccount.getMovements();
+console.log(gabrielAccount.getPin());
+
+// chaining methods.
+// to call each method we should call it from the class
+// that is why on each method we return the object ( this )
+// so it will be able to call another method from it again
+gabrielAccount
+  .deposit(300)
+  .withdraw(100)
+  .withdraw(10)
+  .requestLoan(25000)
+  .withdraw(4000)
+  .getMovements();
+
+// class summary with one more example
+class StudentSummary extends Person {
+  college = 'NBCC';
+  #studyHours = 0;
+  #course;
+  static numSubjects = 10;
+
+  constructor(fullName, birthYear, startYear, course) {
+    super(fullName, birthYear);
+    this.startYear = startYear;
+    this.#course = course;
+  }
+
+  introduce() {
+    console.log(`I study ${this.#course} at ${this.college}`);
+  }
+
+  study(h) {
+    this.#makeCoffee();
+    this.#studyHours += h;
+  }
+
+  #makeCoffee() {
+    return 'Coffee for you!';
+  }
+
+  get testScore() {
+    return this._testScore;
+  }
+
+  set testScore(score) {
+    this._testScore = score < 20 ? score : 0;
+  }
+
+  static printCurriculum() {
+    console.log(`There are ${this.numSubjects} subject`);
+  }
+}
+
+const student = new StudentSummary('Gabriel Rodrigues', 2005, 2024, 'ITSD');
