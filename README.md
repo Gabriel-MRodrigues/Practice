@@ -41,6 +41,8 @@ This repository includes code written in:
 - **C#**
 - **JavaScript**
 - **HTML5/CSS3**
+- **Python**
+- **React**
 
 ---
 
